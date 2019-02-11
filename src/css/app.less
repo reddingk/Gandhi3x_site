@@ -1,0 +1,127 @@
+@lrg-screen: ~"(min-width:1201px)";
+@md-screen: ~"(max-width: 1200px) and (min-width:901px)";
+@sm-screen: ~"(max-width: 900px) and (min-width:601px)";
+@mobile-device: ~"(max-width: 600px)";
+
+/* Color Themes */
+@background: rgba(51, 52, 50, 1);
+.background(@prop,@val){ @{prop}: rgba(220,220,220,@val) !important; }
+
+@color1: rgba(205,133,63,1);
+.color1(@prop,@val){ @{prop}: rgba(205,133,63,@val) !important; }
+
+/* Fonts */
+@font-size: 14px;
+@import url('https://fonts.googleapis.com/css?family=Just+Another+Hand|Montserrat|Raleway|Reenie+Beanie');
+
+@import "home.less";
+
+body, html { 
+    margin: 0px !important;
+    color: rgba(0,0,0,1);
+    height: 100%;
+    font-size: @font-size;
+    //font-family: 'Reenie Beanie', cursive;
+    //font-family: 'Raleway', sans-serif;
+    //font-family: 'Just Another Hand', cursive;
+    font-family: 'Montserrat', sans-serif;
+}
+.navbar {
+    z-index: 100;
+    background: rgba(0,0,0,1) !important;
+    .navbar-brand {
+        font-family: 'Reenie Beanie', cursive;
+        font-size: 40px;
+        color: @color1 !important;
+
+        &.navbar-brand-centered {
+            position: absolute;
+            left: 50%;
+            display: block;
+            width: 160px;
+            text-align: center;
+
+            margin-left: -80px;
+        }
+    }
+
+    .nav-item {
+        font-size: 1.2rem;
+        &+.nav-item { margin-left: 20px; }
+    }
+
+    .nav-right { margin-right: 25%;}
+    .nav-left { margin-left: 25%; }
+}
+
+.page-body {
+    height: calc(100vh - 53px);
+    padding: 5%;
+    position: relative;
+    overflow: hidden;
+    .background-container {
+        width: 100%;
+        height:100%;
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: 0; 
+        filter: grayscale(50%) blur(5px);
+        -webkit-filter: grayscale(50%) blur(5px);
+        transform: scale(1.1);
+        .background-img {
+            width: 100%;
+            height:100%;         
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            background: rgba(60,60,80,1);
+            opacity: 0.7;
+        }
+    }
+    .content-container { 
+        position: relative;
+        border: 1px solid rgba(50,50,50,1);
+        height:100%;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        .body-container { flex: 1;}
+        .footer-container {
+            padding: 5px 2%;
+            display: flex;
+            justify-content: space-between;
+            color: rgba(150,150,150,1);
+            background: rgba(50,50,50,1);
+            min-height: 31px;
+
+            .contact-pills {
+                display: flex;
+                .footer-pill {
+                    padding: 3px 10px;
+                    border-radius: 50px;
+                    font-size: .7rem;
+                    background: rgba(70,70,70,0.5);
+                    color: rgba(150,150,150,1);
+                    transition: 0.5s all ease-in-out;
+
+                    &.instagram { &:hover { background: rgba(195,42,163,0.5);}}
+                    &.facebook{ &:hover { background: rgba(59,89,152,0.5);}}
+                    &.twitter{ &:hover { background: rgba(0,182,241,0.5);}}
+                    &.spotify{ &:hover { background: rgba(29, 185, 84, 0.5);}}
+                    &.soundcloud{ &:hover { background: rgba(255, 85, 0, 0.5);}}
+
+                    &:hover { text-decoration: none; }
+                    &+.footer-pill { margin-left: 5px;}
+                    i { margin-right: 7px;}
+                }
+            }
+        }
+    }
+}
+

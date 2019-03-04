@@ -14,7 +14,7 @@ class CarouselCover extends Component{
             <div className="carousel-container cover">
                 <img alt="carousel item" src={this.props.item.img} />
                 <div className="carousel-cover"></div>
-                <h1 className={'page-title ' + this.props.item.class}>{this.props.item.content}</h1>
+                <h1 className="page-title">{this.props.item.content}</h1>
             </div>    
         );        
     }

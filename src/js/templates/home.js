@@ -20,7 +20,7 @@ class Home extends Component{
         this.state = {
             scrollSpy: true,
             scrollSmooth: true,
-            scrollDuration: 7000,
+            scrollDuration: 7000,            
             showThumbs: false,
             carouselData: [
                 { img:backgroundImg, class:"cover", content:"Gandhi3x"},
@@ -49,7 +49,7 @@ class Home extends Component{
                 <div className="content-container">
                     { /* Body */}
                     <div className="body-container">
-                        <Carousel className="main-carousel" showThumbs={this.state.showThumbs} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
+                        <Carousel className="main-carousel" showThumbs={this.state.showThumbs} showStatus={false} interval={this.state.scrollDuration} infiniteLoop >
                             {this.state.carouselData.map((item, i) => 
                                 <div className="slide-container" key={i}>
                                     {this.renderSwitch(item) }

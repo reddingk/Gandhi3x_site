@@ -21,7 +21,7 @@ class CarouselEvent extends Component{
                         <p className="event-text">{this.props.item.content.text}</p>
                         <p className="event-date">{this.cleanDate(this.props.item.content.date)}</p>
                         {this.props.item.content.links.map((item,i) => 
-                            <a href={item.link} className="event-link" target="_blank">{item.title}</a>
+                            <a href={item.link} key={i} className="event-link" target="_blank">{item.title}</a>
                         )}
                     </div>
                 </div>

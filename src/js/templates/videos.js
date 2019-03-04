@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 /* Components */
 import Footer from './footer';
 
+/* Images */
+import backgroundImg from '../../assets/img/GandhiAli-banner4.jpg';
+
 class Videos extends Component{
     constructor(props) {
         super(props);
@@ -15,6 +18,7 @@ class Videos extends Component{
     render(){        
         return(
             <div className="page-body">
+                <div className="background-container"><img className="background-img" src={backgroundImg}></img></div>
                 <div className="content-container">
                     { /* Body */}
                     <div className="body-container">

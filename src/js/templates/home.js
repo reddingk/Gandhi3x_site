@@ -49,7 +49,7 @@ class Home extends Component{
                 <div className="content-container">
                     { /* Body */}
                     <div className="body-container">
-                        <Carousel className="main-carousel" showThumbs={this.state.showThumbs} showStatus={false} interval={this.state.scrollDuration} infiniteLoop >
+                        <Carousel className="main-carousel" showThumbs={this.state.showThumbs} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
                             {this.state.carouselData.map((item, i) => 
                                 <div className="slide-container" key={i}>
                                     {this.renderSwitch(item) }

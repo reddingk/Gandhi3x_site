@@ -8,16 +8,20 @@ import Footer from './footer';
 /* Images */
 import backgroundImg from '../../assets/img/GandhiAli-banner2.png';
 import defaultImg from '../../assets/img/CMOG.jpeg';
-import tmpCover from '../../assets/img/CMOG.jpeg';
+import tmpCover from '../../assets/img/CMOG.jpg';
 
 const carouselOptions = {
-    scrollSpy: true,
-    scrollSmooth: true,
-    scrollDuration: 5500,
+    duration:400,
+    autoPlayInterval:7000,
     responsive: {
         0: { items: 1 },
-        600: { items: 2 },
-        1024: { items: 3 },
+        600: { items: 3 },
+        1024: { items: 5 },
+    },
+    responsiveSingle: {
+        0: { items: 1 },
+        600: { items: 1 },
+        1024: { items: 1 },
     }
 };
 
@@ -37,7 +41,8 @@ class Music extends Component{
                     {"title":"C.M.O.G.", "additionalInfo":"", "date":"2018-11-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
                     {"title":"Trap blues", "additionalInfo":"Beats by Drty Wahol", "date":"2019-01-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
                     {"title":"Never Mind Em", "additionalInfo":"", "date":"2018-09-25", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
-                    {"title":"That Way", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover}
+                    {"title":"That Way", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
+                    {"title":"That Way 2", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover}
                 ],
                 mixtapes:[
                     {"title":"Dirty Work", "additionalInfo":"Drty Work by Gandhi Ali", "date":"2016-07-12", "url":"https://spinrilla.com/mixtapes/gandhi-ali-dirty-work/embed", "img":""},
@@ -48,10 +53,6 @@ class Music extends Component{
                     {"title":"That Way", "additionalInfo":"", "date":"2017-08-18", "links":[{"type":"itunes", "url":"https://itunes.apple.com/us/album/that-way-feat-sleep/id1276026221?i=1276026223"}], "img":""},
                     {"title":"Test Song 1", "additionalInfo":"", "date":"2017-08-18", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
                     {"title":"Test Song 2", "additionalInfo":"", "date":"2017-07-18", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 3", "additionalInfo":"", "date":"2017-06-18", "links":[{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 4", "additionalInfo":"", "date":"2017-05-28", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 5", "additionalInfo":"", "date":"2017-05-10", "links":[{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 6", "additionalInfo":"", "date":"2017-05-01", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
                     {"title":"Test Song 7", "additionalInfo":"beats by test", "date":"2017-08-19", "links":[{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
                     {"title":"Test Song 8", "additionalInfo":"ft. T. est", "date":"2017-04-13", "links":[{"type":"spinrilla", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
                     {"title":"Test Song 9", "additionalInfo":"ft. 1test", "date":"2017-05-15", "links":[{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
@@ -60,18 +61,23 @@ class Music extends Component{
                 ],
             }
         }
+
+        this.albumCarousel = null;
+        this.mixtapeCarousel = null;
+
+        this.getLinkIcon = this.getLinkIcon.bind(this);
     }
 
     buildAlbums(){
         return(
             this.state.music.albums.map((album,i) => (
                 <div key={i} className="album-conatainer">
-                    <div className="cover-container">                        
-                        <img src={(album.img ? album.img : defaultImg)}/>                           
-                    </div>
                     <div className="album-info">
                         <div className="album-title">{album.title}</div>
                         <div className="album-additional">{album.additionalInfo}</div>                        
+                    </div>
+                    <div className="cover-container">                        
+                        <img src={(album.img ? album.img : defaultImg)}/>                           
                     </div>
                 </div>
             ))
@@ -82,12 +88,24 @@ class Music extends Component{
         return(
             this.state.music.mixtapes.map((mixtape,i) => (
                 <div key={i} className="mixtape-conatainer">
-                    <iframe src={mixtape.url} />
+                    <iframe src={mixtape.url} frameborder="0" height="450px" allowtransparency='true'/>
                 </div>
             ))
         )
     }
-   
+    
+    getLinkIcon(link, key){
+        switch(link.type){
+            case "itunes":
+                return <a href={link.url} target="_blank" key={key} className="link-icon itunes"><i className="fab fa-apple"></i></a>
+            case "soundcloud":
+                return <a href={link.url} target="_blank" key={key} className="link-icon soundcloud"><i className="fab fa-soundcloud"></i></a>
+            case "spinrilla":
+                return <a href={link.url} target="_blank" key={key} className="link-icon spinrilla"><i className="fas fa-compact-disc"></i></a>
+            default:
+                return <a href={link.url} target="_blank" key={key} className="link-icon other"><i className="fas fa-music"></i></a>
+        }
+    }
 
     render(){   
         const albums = this.buildAlbums();
@@ -99,15 +117,47 @@ class Music extends Component{
                 <div className="content-container">                    
                     <div className="body-container page music">
                         <h1>Music</h1>
-                        <div className="music-container">
+                        <div className="music-container scroll-style">
+                            <h2 className="sub-title">Albums</h2>   
                             <div className="music-row album">
                                 <div className="list-container">
-                                    <span className="ctrl prev" onClick={() => this.Carousel._slidePrev()}><i className="fas fa-chevron-left"></i></span>
-                                    <span className="ctrl next" onClick={() => this.Carousel._slideNext()}><i className="fas fa-chevron-right"></i></span>
+                                    <span className="ctrl prev" onClick={() => this.albumCarousel._slidePrev()}><i className="fas fa-chevron-left"></i></span>
+                                    <span className="ctrl next" onClick={() => this.albumCarousel._slideNext()}><i className="fas fa-chevron-right"></i></span>
+
                                     <AliceCarousel className="album-carousel" items={albums}
-                                        duration={400} mouseDragEnabled={true} autoPlay={true}
-                                        autoPlayInterval={7000} autoPlayDirection="ltr" responsive={this.state.responsive}
-                                        disableAutoPlayOnAction={true} buttonsDisabled={true} ref={ el => this.Carousel = el }/>
+                                        duration={carouselOptions.duration} mouseDragEnabled={true} responsive={carouselOptions.responsive}
+                                        buttonsDisabled={true} dotsDisabled={true} ref={ el => this.albumCarousel = el }/>
+                                </div>
+                            </div>
+
+                            <div className="music-row split">
+                                <div className="split-section sz-6">
+                                    <h2 className="sub-title lrg-gap">Tracks</h2>
+                                    <div className="track-list">
+                                        {this.state.music.songs.map((song,i) => (
+                                            <div key={i} className="track-item">
+                                                <div className="song-icon"><i className="fas fa-headphones-alt"></i></div>
+                                                <div className="song-title">{song.title}</div>
+                                                <div className="song-links-container">
+                                                    {song.links.map((link,j) => (
+                                                        this.getLinkIcon(link,j)
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                
+                                <div className="split-section sz-4">
+                                    <h2 className="sub-title">Mixtapes</h2>
+                                    <div className="list-container single">
+                                        <span className="ctrl prev" onClick={() => this.mixtapeCarousel._slidePrev()}><i className="fas fa-chevron-left"></i></span>
+                                        <span className="ctrl next" onClick={() => this.mixtapeCarousel._slideNext()}><i className="fas fa-chevron-right"></i></span>
+
+                                        <AliceCarousel className="album-carousel" items={mixtapes}
+                                            duration={carouselOptions.duration} mouseDragEnabled={true} responsive={carouselOptions.responsiveSingle}
+                                            buttonsDisabled={true} dotsDisabled={true} ref={ el => this.mixtapeCarousel = el }/>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,4 @@
-@lrg-screen: ~"(min-width:1201px)";
-@md-screen: ~"(max-width: 1200px) and (min-width:901px)";
-@sm-screen: ~"(max-width: 900px) and (min-width:601px)";
-@mobile-device: ~"(max-width: 600px)";
+@mobile-device: ~"(max-width: 770px)";
 
 /* Color Themes */
 @background: rgba(51, 52, 50, 1);
@@ -11,6 +8,7 @@
 .color1(@prop,@val){ @{prop}: rgba(205,133,63,@val) !important; }
 
 /* Fonts */
+@iconsize: 25px;
 @font-size: 14px;
 @import url('https://fonts.googleapis.com/css?family=Just+Another+Hand|Montserrat|Raleway|Reenie+Beanie');
 
@@ -57,7 +55,7 @@ body, html {
 
 .page-body {
     height: calc(100vh - 53px);
-    padding: 5% 5% 2%;
+    padding: 4% 4% 2%;
     position: relative;
     overflow: hidden;
     .background-container {
@@ -98,7 +96,13 @@ body, html {
         .body-container { 
             overflow: hidden; flex: 1;
             &.page {
-                padding: 10px 2% 0px;
+                h1 { 
+                    padding: 10px 3%;
+                    background: rgba(50,50,50,1);
+                    border-bottom: 1px solid rgba(150,150,150,0.2);
+                    margin-bottom: 30px;
+                    color:rgba(150,150,150,1);
+                }
             }
         }
         .footer-container {
@@ -108,6 +112,8 @@ body, html {
             color: rgba(150,150,150,1);
             background: rgba(50,50,50,1);
             min-height: 31px;
+
+            @media @mobile-device { flex-wrap: wrap; }
 
             .contact-pills {
                 display: flex;
@@ -128,6 +134,8 @@ body, html {
                     &:hover { text-decoration: none; }
                     &+.footer-pill { margin-left: 5px;}
                     i { margin-right: 7px;}
+
+                    span { @media @mobile-device { display: none; } }
                 }
             }
         }
@@ -136,14 +144,106 @@ body, html {
 
 .list-container {
     position: relative;
+    width: 100%;
     .ctrl{
         cursor: pointer;
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 110%;
+        transform: translateY(-110%);
         z-index: 3;
-        font-size: 25px;
+        font-size: 15px;
+        .color1(background, 0.7);
+        border-radius: 50%;
+        height: 25px;
+        width: 25px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: 0.5s all ease-in-out;
+
+        &:hover { opacity: 0.8;}
         &.prev { left: 5px;}
         &.next{ right: 5px; }
     }
+
+    &.single {
+        padding-top:35px;
+        .ctrl { top:0; transform: translateY(0%);}
+    }
+    .alice-carousel {
+        height: 100%;
+        div { 
+            height: 100%;
+            div { height: initial; }
+            .alice-carousel__wrapper {
+                height: 100%;
+                ul {
+                    li {
+                        height: 100%;
+                        text-align: center;
+                        padding: 5px;
+                        .album-conatainer { 
+                            height: 100%;
+                            overflow: hidden;
+                            display: flex;
+                            flex-direction: column-reverse;
+                            padding: 7px;
+                            .cover-container {
+                                height: inherit;
+                                margin-bottom: 7px;
+                                text-align: left;
+                                img { 
+                                    height: 100%; 
+                                    max-width: 100%;
+                                    //-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.20);
+                                    //-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.20);
+                                    //box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.20);
+                                }
+                            }
+                            .album-info {
+                                text-align: left;
+                                .album-title { font-weight: bold; font-size: 1.1rem; color: @color1; }
+                                .album-additional { font-size: 0.8rem; color: rgba(150,150,150,1); }
+                            }
+                        }                        
+                    }
+                }
+            }
+        }
+    }
 }
+
+/**/
+.sub-title { 
+    display:block; 
+    font-weight: bold; 
+    color: @color1; 
+    &.lrg-gap { margin-bottom: 45px; }
+}
+
+/* Custom Scrollbar*/
+.scroll-style {
+    &::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar
+    {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        background-color: @color1; 
+        background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
+                                transparent 25%, transparent 50%,rgba(255, 255, 255, .2) 50%,
+                                rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    }
+}
+

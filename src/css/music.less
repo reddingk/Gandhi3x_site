@@ -1,8 +1,86 @@
 .music {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
     .music-container {
+        overflow-y: auto;
+        padding: 0px 3% 20px;
         .music-row {
             display: flex;
             
+            &+.music-row { margin-top: 50px; }
+            &.album { height: 200px; }
+
+            &.split {
+                .split-section {
+                    &+.split-section { padding-left: 10px; }
+                    &.sz-1 { width: 10%; @media @mobile-device { width: 100%; }}
+                    &.sz-2 { width: 20%; @media @mobile-device { width: 100%; }}
+                    &.sz-3 { width: 30%; @media @mobile-device { width: 100%; }}
+                    &.sz-4 { width: 40%; @media @mobile-device { width: 100%; }}
+                    &.sz-5 { width: 50%; @media @mobile-device { width: 100%; }}
+                    &.sz-6 { width: 60%; @media @mobile-device { width: 100%; }}
+                }
+                @media @mobile-device { flex-wrap: wrap; }
+
+                .track-list {                     
+                    .track-item {
+                        display: flex;
+                        background: rgba(255,255,255,0.9);
+                        padding: 10px 7px;
+                        &+.track-item { margin-top: 5px;}
+
+                        .song-icon {
+                            background: @color1;
+                            color: rgba(255,255,255,1);
+                            margin-right: 20px;
+                            height: @iconsize;
+                            width: @iconsize;
+                            border-radius: 50%;
+                            text-align: center;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                        }
+                        .song-title {
+                            font-weight: bold;
+                            font-size: 1.5rem;
+                            font-family: 'Reenie Beanie', cursive;
+                        }
+
+                        .song-links-container {
+                            display: flex;
+                            flex:1;
+                            justify-content: flex-end;
+                            margin-left: 7px;
+                            .link-icon {
+                                height: @iconsize;
+                                width: @iconsize;
+                                border-radius: 5px;
+                                text-align: center;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                color: rgba(255,255,255,1);
+                                background: rgba(150,150,150,0.9);
+                                opacity: 0.5;
+                                transition: 0.5s all ease-in-out;
+
+                                &:hover { opacity: 1; text-decoration: none; }
+
+                                &+.link-icon { margin-left: 7px;}
+                                &.itunes { background: rgba(105,166,249,0.9); }
+                                &.soundcloud { background: rgba(255,119,0,0.9); }
+                                &.spinrilla { background: rgba(70,8,86,0.9); }
+                            }
+                        }
+                    }
+                }
+
+                .single {
+                    .mixtape-conatainer { text-align: left; iframe { width: 100%; }}
+                }
+            }
         }
     }
 }

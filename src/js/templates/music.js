@@ -30,12 +30,6 @@ class Music extends Component{
         super(props);
 
         this.state = {
-            titleSearch:"",
-            displayMusic:{
-                albums:[],
-                mixtapes:[],
-                songs:[]
-            },
             music:{
                 albums:[
                     {"title":"C.M.O.G.", "additionalInfo":"", "date":"2018-11-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},

@@ -1,10 +1,7 @@
-.music {
-    display: flex;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.9);
+.music {    
     .music-container {
         overflow-y: auto;
-        padding: 0px 3% 20px;
+        padding: 30px 3%;
         .music-row {
             display: flex;
             
@@ -26,7 +23,7 @@
                 .track-list {                     
                     .track-item {
                         display: flex;
-                        background: rgba(255,255,255,0.9);
+                        background: rgba(255,255,255,1);
                         padding: 10px 7px;
                         &+.track-item { margin-top: 5px;}
 
@@ -41,6 +38,8 @@
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
+                            overflow: hidden;
+                            img{ width: 150%; height: 150%;}
                         }
                         .song-title {
                             font-weight: bold;

@@ -14,6 +14,7 @@
 
 @import "home.less";
 @import "music.less";
+@import "videos.less";
 
 body, html { 
     margin: 0px !important;
@@ -96,11 +97,14 @@ body, html {
         .body-container { 
             overflow: hidden; flex: 1;
             &.page {
+                display: flex;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.6);
                 h1 { 
                     padding: 10px 3%;
                     background: rgba(50,50,50,1);
                     border-bottom: 1px solid rgba(150,150,150,0.2);
-                    margin-bottom: 30px;
+                    margin-bottom: 0;
                     color:rgba(150,150,150,1);
                 }
             }
@@ -111,10 +115,10 @@ body, html {
             justify-content: space-between;
             color: rgba(150,150,150,1);
             background: rgba(50,50,50,1);
-            min-height: 31px;
+            min-height: 29px;
 
             @media @mobile-device { flex-wrap: wrap; }
-
+            .copyright { font-size: 12px; }
             .contact-pills {
                 display: flex;
                 .footer-pill {
@@ -145,36 +149,34 @@ body, html {
 .list-container {
     position: relative;
     width: 100%;
-    .ctrl{
-        cursor: pointer;
-        position: absolute;
-        top: 110%;
-        transform: translateY(-110%);
+    .ctrl-container {        
         z-index: 3;
-        font-size: 15px;
-        .color1(background, 0.7);
-        border-radius: 50%;
-        height: 25px;
-        width: 25px;
-        text-align: center;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        opacity: 0.5;
-        cursor: pointer;
-        transition: 0.5s all ease-in-out;
+        .ctrl{
+            cursor: pointer;            
+            font-size: 15px;            
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            text-align: center;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0.5;
+            color:rgba(255,255,255,1);
+            cursor: pointer;
+            transition: 0.5s all ease-in-out;
 
-        &:hover { opacity: 0.8;}
-        &.prev { left: 5px;}
-        &.next{ right: 5px; }
+            &:hover { opacity: 0.8; color:@color1;}
+            &.prev { left: 5px;}
+            &.next{ right: 5px; }
+            &+.ctrl { margin-left: 10px;}
+        }
     }
+    &.single { padding-top:7px;  }
 
-    &.single {
-        padding-top:35px;
-        .ctrl { top:0; transform: translateY(0%);}
-    }
     .alice-carousel {
-        height: 100%;
+        height: calc(100% - 25px);
         div { 
             height: 100%;
             div { height: initial; }
@@ -185,7 +187,7 @@ body, html {
                         height: 100%;
                         text-align: center;
                         padding: 5px;
-                        .album-conatainer { 
+                        .album-container { 
                             height: 100%;
                             overflow: hidden;
                             display: flex;
@@ -197,16 +199,19 @@ body, html {
                                 text-align: left;
                                 img { 
                                     height: 100%; 
-                                    max-width: 100%;
-                                    //-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.20);
-                                    //-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.20);
-                                    //box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.20);
+                                    max-width: 100%;                                    
                                 }
+                                iframe { .color1(background, 0.2); }
                             }
                             .album-info {
                                 text-align: left;
                                 .album-title { font-weight: bold; font-size: 1.1rem; color: @color1; }
                                 .album-additional { font-size: 0.8rem; color: rgba(150,150,150,1); }
+                            }
+
+                            &.style-2 {
+                                .cover-container { text-align: center; }
+                                .album-title { text-align: center; font-size: 1.2rem; }
                             }
                         }                        
                     }
@@ -220,7 +225,7 @@ body, html {
 .sub-title { 
     display:block; 
     font-weight: bold; 
-    color: @color1; 
+    color: rgba(150,150,150,1); 
     &.lrg-gap { margin-bottom: 45px; }
 }
 
@@ -234,7 +239,7 @@ body, html {
 
     &::-webkit-scrollbar
     {
-        width: 10px;
+        width: 5px;
         background-color: #F5F5F5;
     }
 
@@ -247,3 +252,10 @@ body, html {
     }
 }
 
+.tst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(255,255,255,1);
+    h1{ font-size: 70px; color: @color1; text-align: center; font-family: 'Reenie Beanie', cursive; }
+}

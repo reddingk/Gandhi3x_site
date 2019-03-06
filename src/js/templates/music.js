@@ -7,7 +7,8 @@ import Footer from './footer';
 
 /* Images */
 import backgroundImg from '../../assets/img/GandhiAli-banner2.png';
-import defaultImg from '../../assets/img/CMOG.jpeg';
+import defaultImg from '../../assets/img/DefaultImg.PNG';
+import defaultImgAlt from '../../assets/img/DefaultImgW.PNG';
 import tmpCover from '../../assets/img/CMOG.jpg';
 
 const carouselOptions = {
@@ -33,9 +34,9 @@ class Music extends Component{
             music:{
                 albums:[
                     {"title":"C.M.O.G.", "additionalInfo":"", "date":"2018-11-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
-                    {"title":"Trap blues", "additionalInfo":"Beats by Drty Wahol", "date":"2019-01-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
+                    {"title":"Trap blues", "additionalInfo":"Beats by Drty Wahol", "date":"2019-01-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":null},
                     {"title":"Never Mind Em", "additionalInfo":"", "date":"2018-09-25", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
-                    {"title":"That Way", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
+                    {"title":"That Way", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":null},
                     {"title":"That Way 2", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover}
                 ],
                 mixtapes:[
@@ -65,13 +66,13 @@ class Music extends Component{
     buildAlbums(){
         return(
             this.state.music.albums.map((album,i) => (
-                <div key={i} className="album-conatainer">
+                <div key={i} className="album-container">
                     <div className="album-info">
                         <div className="album-title">{album.title}</div>
                         <div className="album-additional">{album.additionalInfo}</div>                        
                     </div>
                     <div className="cover-container">                        
-                        <img src={(album.img ? album.img : defaultImg)}/>                           
+                        <img src={(album.img && album.img !== "" ? album.img : defaultImgAlt)}/>                           
                     </div>
                 </div>
             ))
@@ -81,7 +82,7 @@ class Music extends Component{
     buildMixtapes(){
         return(
             this.state.music.mixtapes.map((mixtape,i) => (
-                <div key={i} className="mixtape-conatainer">
+                <div key={i} className="mixtape-container">
                     <iframe src={mixtape.url} frameborder="0" height="450px" allowtransparency='true'/>
                 </div>
             ))
@@ -114,13 +115,14 @@ class Music extends Component{
                         <div className="music-container scroll-style">
                             <h2 className="sub-title">Albums</h2>   
                             <div className="music-row album">
-                                <div className="list-container">
-                                    <span className="ctrl prev" onClick={() => this.albumCarousel._slidePrev()}><i className="fas fa-chevron-left"></i></span>
-                                    <span className="ctrl next" onClick={() => this.albumCarousel._slideNext()}><i className="fas fa-chevron-right"></i></span>
-
+                                <div className="list-container">                                    
                                     <AliceCarousel className="album-carousel" items={albums}
                                         duration={carouselOptions.duration} mouseDragEnabled={true} responsive={carouselOptions.responsive}
                                         buttonsDisabled={true} dotsDisabled={true} ref={ el => this.albumCarousel = el }/>
+                                    <span className="ctrl-container">
+                                        <span className="ctrl prev" onClick={() => this.albumCarousel._slidePrev()}><i className="fas fa-chevron-left"></i></span>
+                                        <span className="ctrl next" onClick={() => this.albumCarousel._slideNext()}><i className="fas fa-chevron-right"></i></span>
+                                    </span>
                                 </div>
                             </div>
 
@@ -130,7 +132,9 @@ class Music extends Component{
                                     <div className="track-list">
                                         {this.state.music.songs.map((song,i) => (
                                             <div key={i} className="track-item">
-                                                <div className="song-icon"><i className="fas fa-headphones-alt"></i></div>
+                                                <div className="song-icon">                                                    
+                                                    <img src={(song.img && song.img !== "" ? song.img : defaultImg)}/>
+                                                </div>
                                                 <div className="song-title">{song.title}</div>
                                                 <div className="song-links-container">
                                                     {song.links.map((link,j) => (
@@ -145,9 +149,10 @@ class Music extends Component{
                                 <div className="split-section sz-4">
                                     <h2 className="sub-title">Mixtapes</h2>
                                     <div className="list-container single">
-                                        <span className="ctrl prev" onClick={() => this.mixtapeCarousel._slidePrev()}><i className="fas fa-chevron-left"></i></span>
-                                        <span className="ctrl next" onClick={() => this.mixtapeCarousel._slideNext()}><i className="fas fa-chevron-right"></i></span>
-
+                                        <span className="ctrl-container">
+                                            <span className="ctrl prev" onClick={() => this.mixtapeCarousel._slidePrev()}><i className="fas fa-chevron-left"></i></span>
+                                            <span className="ctrl next" onClick={() => this.mixtapeCarousel._slideNext()}><i className="fas fa-chevron-right"></i></span>
+                                        </span>
                                         <AliceCarousel className="album-carousel" items={mixtapes}
                                             duration={carouselOptions.duration} mouseDragEnabled={true} responsive={carouselOptions.responsiveSingle}
                                             buttonsDisabled={true} dotsDisabled={true} ref={ el => this.mixtapeCarousel = el }/>

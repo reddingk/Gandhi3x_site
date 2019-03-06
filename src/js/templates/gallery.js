@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// react-photo-gallery
+// react-bnb-gallery
 
 /* Components */
 import Footer from './footer';

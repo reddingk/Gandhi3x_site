@@ -21,8 +21,8 @@ class Shows extends Component{
                 <div className="background-container"><img className="background-img" src={backgroundImg}></img></div>
                 <div className="content-container">
                     { /* Body */}
-                    <div className="body-container">
-                        <h1>Shows</h1>
+                    <div className="body-container tst">
+                        <h1>Gandhi3x</h1>
                     </div>
                     <Footer />
                 </div>

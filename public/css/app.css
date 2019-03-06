@@ -106,14 +106,9 @@
   text-decoration: none;
   background: #464646;
 }
-.music {
-  display: flex;
-  flex-direction: column;
-  background: rgba(0, 0, 0, 0.9);
-}
 .music .music-container {
   overflow-y: auto;
-  padding: 0px 3% 20px;
+  padding: 30px 3%;
 }
 .music .music-container .music-row {
   display: flex;
@@ -182,14 +177,14 @@
 }
 .music .music-container .music-row.split .track-list .track-item {
   display: flex;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   padding: 10px 7px;
 }
 .music .music-container .music-row.split .track-list .track-item + .track-item {
   margin-top: 5px;
 }
 .music .music-container .music-row.split .track-list .track-item .song-icon {
-  background: #cd853f;
+  background: #646464;
   color: #ffffff;
   margin-right: 20px;
   height: 25px;
@@ -199,6 +194,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
+}
+.music .music-container .music-row.split .track-list .track-item .song-icon img {
+  width: 150%;
+  height: 150%;
 }
 .music .music-container .music-row.split .track-list .track-item .song-title {
   font-weight: bold;
@@ -245,6 +245,11 @@
 }
 .music .music-container .music-row.split .single .mixtape-conatainer iframe {
   width: 100%;
+}
+.videos .videos-container {
+  overflow-y: auto;
+  padding: 30px 3%;
+  color: #cd853f;
 }
 body,
 html {
@@ -328,11 +333,16 @@ html {
   overflow: hidden;
   flex: 1;
 }
+.page-body .content-container .body-container.page {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.6);
+}
 .page-body .content-container .body-container.page h1 {
   padding: 10px 3%;
   background: #323232;
   border-bottom: 1px solid rgba(150, 150, 150, 0.2);
-  margin-bottom: 30px;
+  margin-bottom: 0;
   color: #969696;
 }
 .page-body .content-container .footer-container {
@@ -341,12 +351,15 @@ html {
   justify-content: space-between;
   color: #969696;
   background: #323232;
-  min-height: 31px;
+  min-height: 29px;
 }
 @media (max-width: 770px) {
   .page-body .content-container .footer-container {
     flex-wrap: wrap;
   }
+}
+.page-body .content-container .footer-container .copyright {
+  font-size: 12px;
 }
 .page-body .content-container .footer-container .contact-pills {
   display: flex;
@@ -392,42 +405,42 @@ html {
   position: relative;
   width: 100%;
 }
-.list-container .ctrl {
-  position: absolute;
-  top: 110%;
-  transform: translateY(-110%);
+.list-container .ctrl-container {
   z-index: 3;
+  display: flex;
+}
+.list-container .ctrl-container .ctrl {
   font-size: 15px;
-  background: rgba(205, 133, 63, 0.7) !important;
   border-radius: 50%;
   height: 25px;
   width: 25px;
   text-align: center;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: center;
   opacity: 0.5;
+  color: #ffffff;
   cursor: pointer;
   transition: 0.5s all ease-in-out;
 }
-.list-container .ctrl:hover {
+.list-container .ctrl-container .ctrl:hover {
   opacity: 0.8;
+  color: #cd853f;
 }
-.list-container .ctrl.prev {
+.list-container .ctrl-container .ctrl.prev {
   left: 5px;
 }
-.list-container .ctrl.next {
+.list-container .ctrl-container .ctrl.next {
   right: 5px;
 }
-.list-container.single {
-  padding-top: 35px;
+.list-container .ctrl-container .ctrl + .ctrl {
+  margin-left: 10px;
 }
-.list-container.single .ctrl {
-  top: 0;
-  transform: translateY(0%);
+.list-container.single {
+  padding-top: 7px;
 }
 .list-container .alice-carousel {
-  height: 100%;
+  height: calc(100% - 25px);
 }
 .list-container .alice-carousel div {
   height: 100%;
@@ -443,39 +456,49 @@ html {
   text-align: center;
   padding: 5px;
 }
-.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-conatainer {
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container {
   height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column-reverse;
   padding: 7px;
 }
-.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-conatainer .cover-container {
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container .cover-container {
   height: inherit;
   margin-bottom: 7px;
   text-align: left;
 }
-.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-conatainer .cover-container img {
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container .cover-container img {
   height: 100%;
   max-width: 100%;
 }
-.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-conatainer .album-info {
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container .cover-container iframe {
+  background: rgba(205, 133, 63, 0.2) !important;
+}
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container .album-info {
   text-align: left;
 }
-.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-conatainer .album-info .album-title {
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container .album-info .album-title {
   font-weight: bold;
   font-size: 1.1rem;
   color: #cd853f;
 }
-.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-conatainer .album-info .album-additional {
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container .album-info .album-additional {
   font-size: 0.8rem;
   color: #969696;
+}
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container.style-2 .cover-container {
+  text-align: center;
+}
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .album-container.style-2 .album-title {
+  text-align: center;
+  font-size: 1.2rem;
 }
 /**/
 .sub-title {
   display: block;
   font-weight: bold;
-  color: #cd853f;
+  color: #969696;
 }
 .sub-title.lrg-gap {
   margin-bottom: 45px;
@@ -486,10 +509,22 @@ html {
   background-color: #F5F5F5;
 }
 .scroll-style::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
   background-color: #F5F5F5;
 }
 .scroll-style::-webkit-scrollbar-thumb {
   background-color: #cd853f;
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+}
+.tst {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+}
+.tst h1 {
+  font-size: 70px;
+  color: #cd853f;
+  text-align: center;
+  font-family: 'Reenie Beanie', cursive;
 }

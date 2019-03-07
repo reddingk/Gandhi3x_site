@@ -10,7 +10,7 @@ class Footer extends Component{
     render(){        
         return(
             <div className="footer-container">
-                <div class="footer-section contact-pills">
+                <div className="footer-section contact-pills">
                     <a href="https://www.instagram.com/gandhi3x/" target="_blank" className="footer-pill instagram">
                         <i className="fab fa-instagram"></i><span>Instagram</span>
                     </a>

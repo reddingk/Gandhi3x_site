@@ -251,6 +251,21 @@
   padding: 30px 3%;
   color: #cd853f;
 }
+.gallery .gallery-container {
+  overflow-y: auto;
+  padding: 30px 3%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.gallery .gallery-container .img-container {
+  height: 200px;
+  padding: 7px;
+  display: inline-block;
+}
+.gallery .gallery-container .img-container img {
+  height: 100%;
+}
 body,
 html {
   margin: 0px !important;

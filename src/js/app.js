@@ -7,7 +7,7 @@ import Home from './templates/home';
 import Music from './templates/music';
 import Videos from './templates/videos';
 import Shows from './templates/shows';
-import Gallery from './templates/gallery';
+import ImgGallery from './templates/gallery';
 
 /* Styles */
 import "../css/app.less";
@@ -16,7 +16,7 @@ const routes = [
     { path:"/music", component:Music, img:null},
     { path:"/videos", component:Videos, img:null },
     { path:"/shows", component:Shows, img: null },
-    { path:"/gallery", component:Gallery, img:null }    
+    { path:"/gallery", component:ImgGallery, img:null }    
 ];
 
 const SiteRoutes = route => (

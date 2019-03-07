@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// react-photo-gallery
-// react-bnb-gallery
 
 /* Components */
 import Footer from './footer';
@@ -8,23 +6,32 @@ import Footer from './footer';
 /* Images */
 import backgroundImg from '../../assets/img/GandhiAli-banner3.png';
 
-class Gallery extends Component{
+class ImgGallery extends Component{
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            initList:{}
+        }
     }
 
-   
-
+   importAll(r){
+        return r.keys().map(r);
+   }  
+    
     render(){        
         return(
             <div className="page-body">
                 <div className="background-container"><img className="background-img" src={backgroundImg}></img></div>
                 <div className="content-container">
                     { /* Body */}
-                    <div className="body-container">
+                    <div className="body-container page gallery">
                         <h1>Gallery</h1>
+                        <div className="gallery-container scroll-style">
+                            {Object.keys(this.state.initList).map((image,i) => (
+                                <div  key={i} className="img-container"><img src={this.state.initList[image]}/></div>
+                            ))}
+                        </div>
                     </div>
                     <Footer />
                 </div>
@@ -32,9 +39,10 @@ class Gallery extends Component{
         );        
     }
 
-    componentDidMount(){
-        //let self = this;        
+    componentWillMount(){
+        var images = this.importAll(require.context('../../assets/img/gallery',false,/\.(png|jpe?g|svg)$/));      
+        this.setState({ initList: images });
     }
 }
 
-export default Gallery;
+export default ImgGallery;

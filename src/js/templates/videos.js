@@ -46,7 +46,8 @@ class Videos extends Component{
                     <div className="album-info">
                         <div className="album-title">{video.title}</div>                                               
                     </div>
-                    <div className="cover-container">                        
+                    <div className="cover-container">
+                        <i className="fas fa-spinner fa-spin"></i>                        
                         <iframe src={"https://www.youtube.com/embed/"+video.urlcode} frameborder="0" height="300px" allowtransparency='true'/>                        
                     </div>
                 </div>

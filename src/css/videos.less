@@ -4,5 +4,17 @@
         padding: 30px 3%;
         color: @color1;
         
+        .cover-container {
+            position: relative;
+            i { 
+                position: absolute; 
+                top: 40%; 
+                left: 40%;
+                transform: translate(-50%,-50%);
+                z-index: 1;
+                font-size: 80px;
+            }
+            iframe { position: relative; z-index: 3;}
+        }
     }
 }

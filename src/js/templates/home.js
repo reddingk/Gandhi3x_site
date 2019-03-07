@@ -23,8 +23,11 @@ class Home extends Component{
             scrollDuration: 7000,            
             showThumbs: false,
             carouselData: [
-                { img:backgroundImg, class:"cover", content:"Gandhi3x"},
-                { img:eventImg, class:"event", content:{title:"Panda's Play House II: A Trippy Affair", text:"Come checkout Gandhi Ali at MilkBoy Arthouse out in College Park, MD. 12/1", date:'December 01, 2018 20:00:00', links:[{title:"Purchase tickets here", link:"https://www.ticketfly.com/event/1598104-pandas-playhouse-ii-live-college-park/"}]}}
+                { img:backgroundImg, class:"cover", content:"Gandhi3x"},                   
+                { class:"event", content:{ "title":"Panda's Play House II: A Trippy Affair", "location":"MilkBoy ART HOUSE - 7416 Baltimore Ave., College Park, MD.", "date": "2019-12-01 21:00:00", "img":eventImg, links:[{title:"Purchase tickets here", link:"https://www.ticketfly.com/event/1598104-pandas-playhouse-ii-live-college-park/"}] } },
+                { class:"event", content:{ "title":"SXSW Performance", "location":"South by Southwest Festival: Austin, Tx", "date": "2019-03-17 10:00:00", "img":null, links:[]}},
+                { class:"event", content:{ "title":"Hiphopyogalive performance", "location":"Washington Dc-Amsterdam Lounge", "date":"2019-12-02 22:00:00", "img":null, links:[]}}
+
             ]
         }
 
@@ -48,7 +51,7 @@ class Home extends Component{
                 <div className="background-container"><img className="background-img" src={backgroundImg}></img></div>
                 <div className="content-container">
                     { /* Body */}
-                    <div className="body-container">
+                    <div className="body-container home">
                         <Carousel className="main-carousel" showThumbs={this.state.showThumbs} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
                             {this.state.carouselData.map((item, i) => 
                                 <div className="slide-container" key={i}>

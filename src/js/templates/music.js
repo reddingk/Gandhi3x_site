@@ -40,8 +40,8 @@ class Music extends Component{
                     {"title":"That Way 2", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover}
                 ],
                 mixtapes:[
-                    {"title":"Dirty Work", "additionalInfo":"Drty Work by Gandhi Ali", "date":"2016-07-12", "url":"https://spinrilla.com/mixtapes/gandhi-ali-dirty-work/embed", "img":""},
-                    {"title":"Radio Remix Vol 1", "additionalInfo":"Radio Remix Vol 1. by Gandhi Ali", "date":"2016-04-13", "url":"https://spinrilla.com/mixtapes/gandhi-ali_dmv-radio-remix-vol-1-jackin-beats-by-gandhi-ali/embed", "img":""}
+                    {"title":"Dirty Work", "additionalInfo":"Drty Work by Gandhi Ali", "date":"2016-07-12", "url":"https://spinrilla.com/mixtapes/gandhi-ali-dirty-work/embed"},
+                    {"title":"Radio Remix Vol 1", "additionalInfo":"Radio Remix Vol 1. by Gandhi Ali", "date":"2016-04-13", "url":"https://spinrilla.com/mixtapes/gandhi-ali_dmv-radio-remix-vol-1-jackin-beats-by-gandhi-ali/embed"}
                 ],
                 songs:[
                     {"title":"Trap blues", "additionalInfo":"", "date":"2017-11-20", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},

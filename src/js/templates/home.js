@@ -25,9 +25,10 @@ class Home extends Component{
             carouselData: [
                 { img:backgroundImg, class:"cover", content:"Gandhi3x"},                   
                 { class:"event", content:{ "title":"Panda's Play House II: A Trippy Affair", "location":"MilkBoy ART HOUSE - 7416 Baltimore Ave., College Park, MD.", "date": "2019-12-01 21:00:00", "img":eventImg, links:[{title:"Purchase tickets here", link:"https://www.ticketfly.com/event/1598104-pandas-playhouse-ii-live-college-park/"}] } },
-                { class:"event", content:{ "title":"SXSW Performance", "location":"South by Southwest Festival: Austin, Tx", "date": "2019-03-17 10:00:00", "img":null, links:[]}},
-                { class:"event", content:{ "title":"Hiphopyogalive performance", "location":"Washington Dc-Amsterdam Lounge", "date":"2019-12-02 22:00:00", "img":null, links:[]}}
-
+                { class:"event", content:{ "title":"SXSW Performance", "location":"South by Southwest Festival: Austin, Tx", "date": "2019-03-17 10:00:00", "img":null, links:[]}},                
+                { class:"song", content:{"title":"Trap blues", "additionalInfo":"", "date":"2017-11-20", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""}},
+                { class:"album", content:{"title":"C.M.O.G.", "additionalInfo":"", "date":"2018-11-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":null}},
+                { class:"video", content:{"title":"Five", "date":"2016-09-15","urlcode":"8YyLoJkPYRI","text":"Gandhi Ali Five"}},
             ]
         }
 

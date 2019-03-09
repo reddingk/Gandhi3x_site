@@ -99,4 +99,104 @@
             }
         }
     }
+
+    .music {
+        height: 100%;
+        .music-container {
+            display: inline-flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            padding: 3%;
+            .item {
+                display: inherit;
+                text-align: center;
+                &.music-img { justify-content: center; img { height: 100%; width: initial;}}
+                &.video-img { 
+                    flex: 1; 
+                    justify-content: center; 
+                    .video-container { 
+                        border: 2px solid rgba(150,150,150,0.5);
+                        border-radius: 7px;
+                        position: relative;
+                        overflow: hidden;
+                        .video-type { 
+                            position: absolute; 
+                            top:-1px; 
+                            right: -1px;
+                            border-top-right-radius: 7px;
+                            color: rgba(255,255,255,1);
+                            padding: 2px 30px;
+                            background: linear-gradient(90deg, 
+                            rgba(0,0,0,0) 0%, 
+                            rgba(150,150,150,0.5) 20%);
+                        }
+                    }
+                    img { 
+                        height: 100%; 
+                        width: initial;
+                    }
+                }
+
+                .music-title { color: @color1; font-weight: bold; font-size: 2.5rem;}
+                .music-banner { 
+                    display: inline-block;
+                    text-transform: capitalize;
+                    background: linear-gradient(90deg, 
+                        rgba(0,0,0,0) 0%, 
+                        rgba(150,150,150,0.7) 20%, 
+                        rgba(150,150,150,0.7) 80%, 
+                        rgba(0,0,0,0) 100%);
+                    padding: 2px 30px;
+                    margin-bottom: 10px;
+                    font-size: 1.3rem;
+                }
+                &.music-info { 
+                    display: block;
+                    flex-direction: column;
+                    color: rgba(255,255,255,1);
+                    
+                    .music-date {
+                        margin-bottom: 10px;                                    
+                        span{
+                            padding: 3px 10px;
+                            border-radius: 20px;                                    
+                            background: rgba(0,0,0,0.3);
+                            border: 2px solid rgba(255,255,255,0.5);
+                            color: rgba(255,255,255,1);
+                            font-size: .7rem;
+                            display: inline-block;
+                        }
+                    }
+
+                    .music-links {
+                        display: block;
+                        justify-content: center;
+                        .music-link {
+                            padding: 3px 12px;
+                            border-radius: 20px;
+                            margin-left: 7px; 
+                            text-align: center;
+                            display: inline;
+                            color: rgba(255,255,255,1);
+                            background: rgba(150,150,150,0.5);                        
+                            transition: 0.5s all ease-in-out;
+
+                            span { margin-left: 5px;}
+                            i { font-size: 14px;}
+                            &:hover { 
+                                background: rgba(150,150,150,0.9); 
+                                text-decoration: none;
+                                &.itunes { background: rgba(105,166,249,0.9); }
+                                &.soundcloud { background: rgba(255,119,0,0.9); }
+                                &.spinrilla { background: rgba(70,8,86,0.9); }
+                            }                     
+                        }
+                    }
+                }
+
+                &+.item { margin-top: 15px; }
+            }
+        }
+    }
 }

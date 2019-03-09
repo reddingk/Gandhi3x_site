@@ -4,10 +4,11 @@
   "description": "Gandhi Ali Artist Site",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build-css": "less-watch-compiler --run-once --main-file=app.less src/css/ public/css/",
     "watch-css": "npm run build-css && less-watch-compiler --main-file=app.less src/css/ public/css/",
-    "build": "react-scripts build",
+    "build": "npm run build-css && react-scripts build",
+    "heroku-postbuild": "npm run build",
     "script-run": "react-scripts start",
     "script-dev": "concurrently \"npm run watch-css\" \"npm run script-run\" \"wait-on http://localhost:3001\""
   },

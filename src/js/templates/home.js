@@ -6,6 +6,8 @@ import { Carousel } from 'react-responsive-carousel';
 import Footer from './footer';
 import CarouselCover from './components/carouselCover';
 import CarouselEvent from './components/carouselEvent';
+import CarouselSong from './components/carouselSong';
+import CarouselVideo from './components/carouselVideo';
 
 /* Images */
 import backgroundImg from '../../assets/img/GandhiAli-banner.jpg';
@@ -24,11 +26,11 @@ class Home extends Component{
             showThumbs: false,
             carouselData: [
                 { img:backgroundImg, class:"cover", content:"Gandhi3x"},                   
+                { class:"album", content:{"title":"C.M.O.G.", "additionalInfo":"", "date":"2018-11-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":musicImg}},
                 { class:"event", content:{ "title":"Panda's Play House II: A Trippy Affair", "location":"MilkBoy ART HOUSE - 7416 Baltimore Ave., College Park, MD.", "date": "2019-12-01 21:00:00", "img":eventImg, links:[{title:"Purchase tickets here", link:"https://www.ticketfly.com/event/1598104-pandas-playhouse-ii-live-college-park/"}] } },
+                { class:"song", content:{"title":"Trap blues", "additionalInfo":"", "date":"2017-11-20", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":null}},
                 { class:"event", content:{ "title":"SXSW Performance", "location":"South by Southwest Festival: Austin, Tx", "date": "2019-03-17 10:00:00", "img":null, links:[]}},                
-                { class:"song", content:{"title":"Trap blues", "additionalInfo":"", "date":"2017-11-20", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""}},
-                { class:"album", content:{"title":"C.M.O.G.", "additionalInfo":"", "date":"2018-11-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":null}},
-                { class:"video", content:{"title":"Five", "date":"2016-09-15","urlcode":"8YyLoJkPYRI","text":"Gandhi Ali Five"}},
+                { class:"video", content:{"title":"Five", "date":"2016-09-15","urlcode":"8YyLoJkPYRI","text":"Gandhi Ali Five"}}
             ]
         }
 
@@ -41,6 +43,12 @@ class Home extends Component{
             return <CarouselCover item={item}/>;
           case 'event':
             return <CarouselEvent item={item}/>;
+          case 'album':
+            return <CarouselSong item={item} />;
+          case 'song':
+            return <CarouselSong item={item} />;
+          case 'video':
+            return <CarouselVideo item={item} />;
           default:
             return <div>NA</div>;
         }

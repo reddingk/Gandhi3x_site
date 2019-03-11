@@ -10,7 +10,7 @@
 
             &.split {
                 .split-section {
-                    &+.split-section { padding-left: 10px; }
+                    &+.split-section { padding-left: 10px; @media @mobile-device { padding-left: 0px; margin-top: 50px; }}
                     &.sz-1 { width: 10%; @media @mobile-device { width: 100%; }}
                     &.sz-2 { width: 20%; @media @mobile-device { width: 100%; }}
                     &.sz-3 { width: 30%; @media @mobile-device { width: 100%; }}

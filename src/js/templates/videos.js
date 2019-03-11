@@ -26,7 +26,8 @@ const carouselOptions = {
 class Videos extends Component{
     constructor(props) {
         super(props);
-
+        
+        this.rootPath = "";
         this.state = {
             videos: [
                 {"title":"Icey", "date":"2018-02-09","urlcode":"_DY9LEO2BA0","text":"Gandhi Ali Icey"},
@@ -83,8 +84,28 @@ class Videos extends Component{
         );        
     }
 
+    loadVideos(){
+        var self = this;
+        var self = this;
+        try {
+            fetch(self.rootPath + "/api/getVideos")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                self.setState({ videos: data.results});
+            }); 
+        }
+        catch(ex){
+            console.log("Error Loading Latest Data: ", ex);
+        }
+    }
+
     componentDidMount(){
-        //let self = this;        
+        //this.loadVideos();      
     }
 }
 

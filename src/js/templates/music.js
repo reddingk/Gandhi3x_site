@@ -30,31 +30,30 @@ class Music extends Component{
     constructor(props) {
         super(props);
 
-        this.state = {
-            music:{
-                albums:[
-                    {"title":"C.M.O.G.", "additionalInfo":"", "date":"2018-11-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
-                    {"title":"Trap blues", "additionalInfo":"Beats by Drty Wahol", "date":"2019-01-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":null},
-                    {"title":"Never Mind Em", "additionalInfo":"", "date":"2018-09-25", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
-                    {"title":"That Way", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":null},
-                    {"title":"That Way 2", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover}
-                ],
-                mixtapes:[
-                    {"title":"Dirty Work", "additionalInfo":"Drty Work by Gandhi Ali", "date":"2016-07-12", "url":"https://spinrilla.com/mixtapes/gandhi-ali-dirty-work/embed"},
-                    {"title":"Radio Remix Vol 1", "additionalInfo":"Radio Remix Vol 1. by Gandhi Ali", "date":"2016-04-13", "url":"https://spinrilla.com/mixtapes/gandhi-ali_dmv-radio-remix-vol-1-jackin-beats-by-gandhi-ali/embed"}
-                ],
-                songs:[
-                    {"title":"Trap blues", "additionalInfo":"", "date":"2017-11-20", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"That Way", "additionalInfo":"", "date":"2017-08-18", "links":[{"type":"itunes", "url":"https://itunes.apple.com/us/album/that-way-feat-sleep/id1276026221?i=1276026223"}], "img":""},
-                    {"title":"Test Song 1", "additionalInfo":"", "date":"2017-08-18", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 2", "additionalInfo":"", "date":"2017-07-18", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 7", "additionalInfo":"beats by test", "date":"2017-08-19", "links":[{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 8", "additionalInfo":"ft. T. est", "date":"2017-04-13", "links":[{"type":"spinrilla", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 9", "additionalInfo":"ft. 1test", "date":"2017-05-15", "links":[{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 10", "additionalInfo":"", "date":"2017-02-19", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
-                    {"title":"Test Song 11", "additionalInfo":"", "date":"2017-01-28", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""}
-                ],
-            }
+        this.rootPath = "";
+        this.state = {           
+            albums:[
+                {"title":"C.M.O.G.", "additionalInfo":"", "date":"2018-11-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
+                {"title":"Trap blues", "additionalInfo":"Beats by Drty Wahol", "date":"2019-01-20", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":null},
+                {"title":"Never Mind Em", "additionalInfo":"", "date":"2018-09-25", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover},
+                {"title":"That Way", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":null},
+                {"title":"That Way 2", "additionalInfo":"", "date":"2018-07-10", "links":[{"type":"itunes", "url":""},{"type":"soundcloud", "url":""}], "img":tmpCover}
+            ],
+            mixtapes:[
+                {"title":"Dirty Work", "additionalInfo":"Drty Work by Gandhi Ali", "date":"2016-07-12", "url":"https://spinrilla.com/mixtapes/gandhi-ali-dirty-work/embed"},
+                {"title":"Radio Remix Vol 1", "additionalInfo":"Radio Remix Vol 1. by Gandhi Ali", "date":"2016-04-13", "url":"https://spinrilla.com/mixtapes/gandhi-ali_dmv-radio-remix-vol-1-jackin-beats-by-gandhi-ali/embed"}
+            ],
+            songs:[
+                {"title":"Trap blues", "additionalInfo":"", "date":"2017-11-20", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
+                {"title":"That Way", "additionalInfo":"", "date":"2017-08-18", "links":[{"type":"itunes", "url":"https://itunes.apple.com/us/album/that-way-feat-sleep/id1276026221?i=1276026223"}], "img":""},
+                {"title":"Test Song 1", "additionalInfo":"", "date":"2017-08-18", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
+                {"title":"Test Song 2", "additionalInfo":"", "date":"2017-07-18", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
+                {"title":"Test Song 7", "additionalInfo":"beats by test", "date":"2017-08-19", "links":[{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
+                {"title":"Test Song 8", "additionalInfo":"ft. T. est", "date":"2017-04-13", "links":[{"type":"spinrilla", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
+                {"title":"Test Song 9", "additionalInfo":"ft. 1test", "date":"2017-05-15", "links":[{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
+                {"title":"Test Song 10", "additionalInfo":"", "date":"2017-02-19", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"itunes", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"},{"type":"other", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""},
+                {"title":"Test Song 11", "additionalInfo":"", "date":"2017-01-28", "links":[{"type":"soundcloud", "url":"https://soundcloud.com/gandhi3x/sets/trapblues"}], "img":""}
+            ]            
         }
 
         this.albumCarousel = null;
@@ -65,7 +64,7 @@ class Music extends Component{
 
     buildAlbums(){
         return(
-            this.state.music.albums.map((album,i) => (
+            this.state.albums.map((album,i) => (
                 <div key={i} className="album-container">
                     <div className="album-info">
                         <div className="album-title">{album.title}</div>
@@ -81,7 +80,7 @@ class Music extends Component{
 
     buildMixtapes(){
         return(
-            this.state.music.mixtapes.map((mixtape,i) => (
+            this.state.mixtapes.map((mixtape,i) => (
                 <div key={i} className="mixtape-container">
                     <iframe src={mixtape.url} frameborder="0" height="450px" allowtransparency='true'/>
                 </div>
@@ -130,7 +129,7 @@ class Music extends Component{
                                 <div className="split-section sz-6">
                                     <h2 className="sub-title lrg-gap">Tracks</h2>
                                     <div className="track-list">
-                                        {this.state.music.songs.map((song,i) => (
+                                        {this.state.songs.map((song,i) => (
                                             <div key={i} className="track-item">
                                                 <div className="song-icon">                                                    
                                                     <img src={(song.img && song.img !== "" ? song.img : defaultImg)}/>
@@ -167,8 +166,67 @@ class Music extends Component{
         );        
     }
 
+    loadSongsData(){
+        var self = this;
+        try {
+            fetch(self.rootPath + "/api/getSongs")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                self.setState({ songs: data.results});
+            }); 
+        }
+        catch(ex){
+            console.log("Error Loading Latest Data: ", ex);
+        }
+    }
+
+    loadAlbumsData(){
+        var self = this;
+        try {
+            fetch(self.rootPath + "/api/getAlbums")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                self.setState({ albums: data.results});
+            }); 
+        }
+        catch(ex){
+            console.log("Error Loading Latest Data: ", ex);
+        }
+    }
+
+    loadMixtapesData(){
+        var self = this;
+        try {
+            fetch(self.rootPath + "/api/getMixtapes")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                self.setState({ mixtapes: data.results});
+            }); 
+        }
+        catch(ex){
+            console.log("Error Loading Latest Data: ", ex);
+        }
+    }
+
     componentDidMount(){
-        //let self = this;        
+        //this.loadMixtapesData();
+        //this.loadAlbumsData();
+        //this.loadSongsData();    
     }
 }
 

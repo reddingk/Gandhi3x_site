@@ -28,6 +28,8 @@ body, html {
     //font-family: 'Just Another Hand', cursive;
     font-family: 'Montserrat', sans-serif;
 }
+*:focus { outline: none;}
+
 .navbar {
     z-index: 100;
     background: rgba(0,0,0,1) !important;
@@ -44,16 +46,21 @@ body, html {
             text-align: center;
 
             margin-left: -80px;
+
+            @media @mobile-device { position: relative; left: initial; width: initial; margin-left: initial;  }
         }
     }
 
+    .navbar-toggler {
+        border: none;
+    }
     .nav-item {
         font-size: 1.2rem;
-        &+.nav-item { margin-left: 20px; }
+        &+.nav-item { margin-left: 20px; @media @mobile-device { margin-left: initial; }}
     }
 
-    .nav-right { margin-right: 25%;}
-    .nav-left { margin-left: 25%; }
+    .nav-right { margin-right: 25%; @media @mobile-device { margin-right: initial; }}
+    .nav-left { margin-left: 25%; @media @mobile-device { margin-left: initial; }}
 }
 
 .page-body {
@@ -120,7 +127,7 @@ body, html {
             min-height: 29px;
 
             @media @mobile-device { flex-wrap: wrap; }
-            .copyright { font-size: 12px; }
+            .copyright { font-size: 12px; @media @mobile-device { font-size: 9px; }}
             .contact-pills {
                 display: flex;
                 .footer-pill {
@@ -139,13 +146,15 @@ body, html {
 
                     &:hover { text-decoration: none; }
                     &+.footer-pill { margin-left: 5px;}
-                    i { margin-right: 7px;}
+                    i { margin-right: 7px; @media @mobile-device { margin-right: 0px; }}
 
                     span { @media @mobile-device { display: none; } }
                 }
             }
         }
     }
+
+    @media @mobile-device { height: calc(100vh - 83px); }
 }
 
 .list-container {
@@ -174,6 +183,7 @@ body, html {
             &.next{ right: 5px; }
             &+.ctrl { margin-left: 10px;}
         }
+        @media @mobile-device { justify-content: center; }
     }
     &.single { padding-top:7px;  }
     &.show-space { li { padding: 15px 0px 5px !important; }}
@@ -200,6 +210,7 @@ body, html {
                                 height: inherit;
                                 margin-bottom: 7px;
                                 text-align: left;
+                                @media @mobile-device { text-align: center; }
                                 img { 
                                     height: 100%; 
                                     max-width: 100%;                                    
@@ -208,6 +219,7 @@ body, html {
                             }
                             .album-info {
                                 text-align: left;
+                                @media @mobile-device { text-align: center; }
                                 .album-title { font-weight: bold; font-size: 1.1rem; color: @color1; }
                                 .album-additional { font-size: 0.8rem; color: rgba(150,150,150,1); }
                             }

@@ -33,9 +33,7 @@ class Footer extends Component{
         );        
     }
 
-    componentDidMount(){
-        //let self = this;        
-    }
+    componentDidMount(){}
 }
 
 export default Footer;

@@ -26,8 +26,18 @@ class Shows extends Component{
     constructor(props) {
         super(props);
 
+        this.rootPath = "";
         this.state = {
-            events:[]
+            events:[
+                { "title":"Panda's Play House II: A Trippy Affair", "location":"MilkBoy ART HOUSE - 7416 Baltimore Ave., College Park, MD.", "date": "2019-12-01 21:00:00", "img":tmpImg, links:[{title:"Purchase tickets here", link:"https://www.ticketfly.com/event/1598104-pandas-playhouse-ii-live-college-park/"}] },
+                { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-11-28 19:00:00", "img":null, links:[]},
+                { "title":"DanksGiving", "location":"HollyWood Hemp Museum - 6140 Hollywood Blvd., Los Angeles, CA.", "date": "2019-11-24 22:00:00", "img":null, links:[]},
+                { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-08-29 19:00:00", "img":null, links:[]},
+                { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-07-25 19:00:00", "img":null, links:[]},
+                { "title":"Midnight Flow 2", "location":"8241 Georgia Ave., Silver Spring, Md. 20910", "date": "2019-11-02 21:00:00", "img":null, links:[]},
+                { "title":"SXSW Performance", "location":"South by Southwest Festival: Austin, Tx", "date": "2019-03-17 10:00:00", "img":null, links:[]},
+                { "title":"Hiphopyogalive performance", "location":"Washington Dc-Amsterdam Lounge", "date":"2019-12-02 22:00:00", "img":null, links:[]}
+            ]
         }
 
         this.cleanDate = this.cleanDate.bind(this);
@@ -86,30 +96,27 @@ class Shows extends Component{
 
     loadEvents(){
         var self = this;
-        var tmpEvents = [
-            { "title":"Panda's Play House II: A Trippy Affair", "location":"MilkBoy ART HOUSE - 7416 Baltimore Ave., College Park, MD.", "date": "2019-12-01 21:00:00", "img":tmpImg, links:[{title:"Purchase tickets here", link:"https://www.ticketfly.com/event/1598104-pandas-playhouse-ii-live-college-park/"}] },
-            { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-11-28 19:00:00", "img":null, links:[]},
-            { "title":"DanksGiving", "location":"HollyWood Hemp Museum - 6140 Hollywood Blvd., Los Angeles, CA.", "date": "2019-11-24 22:00:00", "img":null, links:[]},
-            { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-08-29 19:00:00", "img":null, links:[]},
-            { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-07-25 19:00:00", "img":null, links:[]},
-            { "title":"Midnight Flow 2", "location":"8241 Georgia Ave., Silver Spring, Md. 20910", "date": "2019-11-02 21:00:00", "img":null, links:[]},
-            { "title":"SXSW Performance", "location":"South by Southwest Festival: Austin, Tx", "date": "2019-03-17 10:00:00", "img":null, links:[]},
-            { "title":"Hiphopyogalive performance", "location":"Washington Dc-Amsterdam Lounge", "date":"2019-12-02 22:00:00", "img":null, links:[]}
-        ];
-
+        var self = this;
         try {
-            var orderedEvents = tmpEvents.sort(function(a,b){  return new Date(a.date) - new Date(b.date);  });
-
-            this.setState({events: orderedEvents});
+            fetch(self.rootPath + "/api/getEvents")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                self.setState({ events: data.results});
+            }); 
         }
         catch(ex){
-
+            console.log("Error Loading Latest Data: ", ex);
         }
     }
+
     cleanDate(dateStr, type){
         var ret = "";
-        // parse Date
-        var resList = dateStr.split(/\D/g);
+                
         var monthList = ["Jan","Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
         var dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -151,9 +158,8 @@ class Shows extends Component{
         return ret;
     }
 
-    componentWillMount(){
-        //let self = this;        
-        this.loadEvents();
+    componentDidMount(){       
+        //this.loadEvents();
     }
 }
 

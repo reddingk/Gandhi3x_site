@@ -137,6 +137,7 @@ body, html {
                     background: rgba(70,70,70,0.5);
                     color: rgba(150,150,150,1);
                     transition: 0.5s all ease-in-out;
+                    @media @mobile-device { padding: 3px 5px;}
 
                     &.instagram { &:hover { background: rgba(195,42,163,0.5);}}
                     &.facebook{ &:hover { background: rgba(59,89,152,0.5);}}
@@ -302,7 +303,7 @@ body, html {
                                         }
                                     }
                                     .event-location { color: rgba(200,200,200,0.8); font-weight: bold; margin-bottom: 7px;}
-                                    .event-title { color: @color1; font-weight: bold; font-size: 1.5rem; margin-bottom: 7px; }
+                                    .event-title { color: @color1; font-weight: bold; font-size: 1.5rem; margin-bottom: 7px; @media @mobile-device { font-size: 1.2rem;}}
 
                                     .event-links {
                                         display: flex;
@@ -315,6 +316,7 @@ body, html {
                                             color: rgba(255,255,255,1);
                                             transition: 0.5s all ease-in-out;
                                             font-size: 1rem;
+                                            @media @mobile-device { font-size: .8rem; }
                                             &:hover { text-decoration: none; background: @color1; }
                                         }
                                     }

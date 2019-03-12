@@ -1,6 +1,7 @@
 .gallery {
     .gallery-container {
         overflow-y: auto;
+        overflow-x: hidden;
         padding: 30px 3%;
         display: flex;
         justify-content: space-between;
@@ -9,7 +10,8 @@
             height: 200px;
             padding: 7px;
             display: inline-block;
-            img { height:100%; }
+            @media @mobile-device { max-width: 100%;}
+            img { height:100%; @media @mobile-device { max-width: 100%; }}
         }
     }
 }

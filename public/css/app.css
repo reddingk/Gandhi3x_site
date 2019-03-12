@@ -476,6 +476,7 @@
 }
 .gallery .gallery-container {
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 30px 3%;
   display: flex;
   justify-content: space-between;
@@ -486,8 +487,18 @@
   padding: 7px;
   display: inline-block;
 }
+@media (max-width: 770px) {
+  .gallery .gallery-container .img-container {
+    max-width: 100%;
+  }
+}
 .gallery .gallery-container .img-container img {
   height: 100%;
+}
+@media (max-width: 770px) {
+  .gallery .gallery-container .img-container img {
+    max-width: 100%;
+  }
 }
 .events .events-container {
   overflow-y: auto;
@@ -652,6 +663,11 @@ html {
   background: rgba(70, 70, 70, 0.5);
   color: #969696;
   transition: 0.5s all ease-in-out;
+}
+@media (max-width: 770px) {
+  .page-body .content-container .footer-container .contact-pills .footer-pill {
+    padding: 3px 5px;
+  }
 }
 .page-body .content-container .footer-container .contact-pills .footer-pill.instagram:hover {
   background: rgba(195, 42, 163, 0.5);
@@ -894,6 +910,11 @@ html {
   font-size: 1.5rem;
   margin-bottom: 7px;
 }
+@media (max-width: 770px) {
+  .list-container .alice-carousel div .alice-carousel__wrapper ul li .event-container .event-subcontainer .event-info .event-title {
+    font-size: 1.2rem;
+  }
+}
 .list-container .alice-carousel div .alice-carousel__wrapper ul li .event-container .event-subcontainer .event-info .event-links {
   display: flex;
   justify-content: center;
@@ -905,6 +926,11 @@ html {
   color: #ffffff;
   transition: 0.5s all ease-in-out;
   font-size: 1rem;
+}
+@media (max-width: 770px) {
+  .list-container .alice-carousel div .alice-carousel__wrapper ul li .event-container .event-subcontainer .event-info .event-links .event-link {
+    font-size: 0.8rem;
+  }
 }
 .list-container .alice-carousel div .alice-carousel__wrapper ul li .event-container .event-subcontainer .event-info .event-links .event-link:hover {
   text-decoration: none;

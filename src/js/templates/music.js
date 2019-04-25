@@ -6,7 +6,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import Footer from './footer';
 
 /* Images */
-import backgroundImg from '../../assets/img/GandhiAli-banner2.png';
+import backgroundImg from '../../assets/img/GandhiAli-banner6.jpg';
 import defaultImg from '../../assets/img/DefaultImg.PNG';
 import defaultImgAlt from '../../assets/img/DefaultImgW.PNG';
 import tmpCover from '../../assets/img/CMOG.jpg';

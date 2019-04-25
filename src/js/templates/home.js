@@ -10,10 +10,10 @@ import CarouselSong from './components/carouselSong';
 import CarouselVideo from './components/carouselVideo';
 
 /* Images */
-import backgroundImg from '../../assets/img/GandhiAli-banner.jpg';
+import backgroundImg from '../../assets/img/GandhiAli-banner5.jpg';
 
 import eventImg from '../../assets/img/panda1.jpeg';
-import musicImg from '../../assets/img/CMOG.jpeg';
+import musicImg from '../../assets/img/CMOG.jpg';
 
 var carouselBase = [{ img:backgroundImg, class:"cover", content:"Gandhi3x"}];
 

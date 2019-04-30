@@ -8,8 +8,8 @@ var data = {
     getAlbums:function(req,res){ 
         var response = {"errorMessage":null, "results":null};
         try {
-            getAlbumsByDate(function(res){
-                res.status(200).json(res);
+            getAlbumsByDate(function(ret){
+                res.status(200).json(ret);
             });
         }        
         catch(ex){
@@ -21,8 +21,8 @@ var data = {
     getSongs:function(req,res){ 
         var response = {"errorMessage":null, "results":null};
         try {
-            getSongsByDate(function(res){
-                res.status(200).json(res);
+            getSongsByDate(function(ret){
+                res.status(200).json(ret);
             });
         }        
         catch(ex){
@@ -34,8 +34,8 @@ var data = {
     getMixtapes:function(req,res){ 
         var response = {"errorMessage":null, "results":null};
         try {
-            getMixtapesByDate(function(res){
-                res.status(200).json(res);
+            getMixtapesByDate(function(ret){
+                res.status(200).json(ret);
             });
         }        
         catch(ex){
@@ -47,8 +47,8 @@ var data = {
     getVideos:function(req,res){ 
         var response = {"errorMessage":null, "results":null};
         try {
-            getVideosByDate(function(res){
-                res.status(200).json(res);
+            getVideosByDate(function(ret){
+                res.status(200).json(ret);
             });
         }        
         catch(ex){
@@ -60,8 +60,8 @@ var data = {
     getEvents:function(req,res){ 
         var response = {"errorMessage":null, "results":null};
         try {
-            getEventsByDate(function(res){
-                res.status(200).json(res);
+            getEventsByDate(function(ret){
+                res.status(200).json(ret);
             });
         }        
         catch(ex){
@@ -75,28 +75,33 @@ var data = {
         var itemList = [];
         try {
             // Events-Songs-Albums-Videos
-            getEventsByDate(function(res){
-                if(res.results){
-                    var tmpList = res.results.map(function(item){ return { class:'event', content: item }});
+            getEventsByDate(function(res1){
+                if(res1.results){
+                    var tmpList = res1.results.map(function(item){ return { class:'event', content: item }});
                     itemList = itemList.concat(tmpList);
                 }
-                getSongsByDate(function(res){
-                    if(res.results){
-                        var tmpList = res.results.map(function(item){ return { class:'song', content: item }});
+                getSongsByDate(function(res2){
+                    if(res2.results){
+                        var tmpList = res2.results.map(function(item){ return { class:'song', content: item }});
                         itemList = itemList.concat(tmpList);
                     }
-                    getAlbumsByDate(function(res){
-                        if(res.results){
-                            var tmpList = res.results.map(function(item){ return { class:'album', content: item }});
+                    getAlbumsByDate(function(res3){
+                        if(res3.results){
+                            var tmpList = res3.results.map(function(item){ return { class:'album', content: item }});
                             itemList = itemList.concat(tmpList);
                         }
-                        getVideosByDate(function(res){
-                            if(res.results){
-                                var tmpList = res.results.map(function(item){ return { class:'video', content: item }});
+                        getVideosByDate(function(res4){
+                            if(res4.results){
+                                var tmpList = res4.results.map(function(item){ return { class:'video', content: item }});
                                 itemList = itemList.concat(tmpList);
                             }
 
-                            response.results = itemList.slice(0,7);
+                            response.results = itemList.sort(function(a,b){ 
+                                var defaultDt = new Date(new Date().setFullYear(new Date().getFullYear() - 2));
+                                var aDate = (a.content && a.content.date ? a.content.date : defaultDt);
+                                var bDate = (b.content && b.content.date ? b.content.date : defaultDt);
+                                return new Date(bDate) - new Date(aDate); 
+                            }).slice(0,7);
                             res.status(200).json(response);
                         });
                     });

@@ -882,6 +882,9 @@ html {
   width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 80%);
 }
+.list-container .alice-carousel div .alice-carousel__wrapper ul li .event-container .event-subcontainer .img-container.empty {
+  background: rgba(0, 0, 0, 0);
+}
 .list-container .alice-carousel div .alice-carousel__wrapper ul li .event-container .event-subcontainer .event-info {
   position: relative;
   z-index: 2;

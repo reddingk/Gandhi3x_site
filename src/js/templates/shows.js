@@ -12,6 +12,8 @@ import backgroundImg from '../../assets/img/GandhiAli-banner1.png';
 import defaultImg from '../../assets/img/DefaultImg.PNG';
 import defaultImgAlt from '../../assets/img/DefaultImgW.PNG';
 
+import emptyImg from '../../assets/img/AliTicket.png';
+
 const carouselOptions = {
     duration:400,
     autoPlayInterval:7000,
@@ -26,18 +28,9 @@ class Shows extends Component{
     constructor(props) {
         super(props);
 
-        this.rootPath = "";
+        this.rootPath = "http://localhost:8004";
         this.state = {
-            events:[
-                { "title":"Panda's Play House II: A Trippy Affair", "location":"MilkBoy ART HOUSE - 7416 Baltimore Ave., College Park, MD.", "date": "2019-12-01 21:00:00", "img":tmpImg, links:[{title:"Purchase tickets here", link:"https://www.ticketfly.com/event/1598104-pandas-playhouse-ii-live-college-park/"}] },
-                { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-11-28 19:00:00", "img":null, links:[]},
-                { "title":"DanksGiving", "location":"HollyWood Hemp Museum - 6140 Hollywood Blvd., Los Angeles, CA.", "date": "2019-11-24 22:00:00", "img":null, links:[]},
-                { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-08-29 19:00:00", "img":null, links:[]},
-                { "title":"Basement Tuesdays", "location":"Pure Lounge - 1326 U Street, NW, DC", "date": "2019-07-25 19:00:00", "img":null, links:[]},
-                { "title":"Midnight Flow 2", "location":"8241 Georgia Ave., Silver Spring, Md. 20910", "date": "2019-11-02 21:00:00", "img":null, links:[]},
-                { "title":"SXSW Performance", "location":"South by Southwest Festival: Austin, Tx", "date": "2019-03-17 10:00:00", "img":null, links:[]},
-                { "title":"Hiphopyogalive performance", "location":"Washington Dc-Amsterdam Lounge", "date":"2019-12-02 22:00:00", "img":null, links:[]}
-            ]
+            events:[]
         }
 
         this.cleanDate = this.cleanDate.bind(this);
@@ -48,11 +41,14 @@ class Shows extends Component{
             this.state.events.map((event,i) => (
                 <div key={i} className={"event-container" + (i === 0 ? " first" : "") + (i === (this.state.events.length -1) ? " last" : "")}>
                     <div className="event-subcontainer">
-                        <div className="img-container">
+                        <div className={"img-container" + (event.empty == true ? " empty" : "")}>
                             <img src={(event.img && event.img !== "" ? event.img : defaultImgAlt)} />
                         </div>
                         <div className="event-info">
-                            <div className="event-date"><span>{this.cleanDate(event.date, 'ddd MMM dd h a') }</span></div>
+                            {event.empty === true ? 
+                                <span />:
+                                <div className="event-date"><span>{this.cleanDate(event.date, 'ddd MMM dd h a') }</span></div>
+                            }
                             <div className="event-location">{event.location}</div>
                             <div className="event-title">{event.title}</div>
                             <div className="event-links">
@@ -106,6 +102,9 @@ class Shows extends Component{
                 return response.json();
             })
             .then(function(data) {
+                if(!data.results || data.results.length == 0){
+                    data.results.push({ "title":"More Events Coming Soon...", "empty":true, "img":emptyImg, "date":new Date(), links:[]})
+                }
                 self.setState({ events: data.results});
             }); 
         }
@@ -159,7 +158,7 @@ class Shows extends Component{
     }
 
     componentDidMount(){       
-        //this.loadEvents();
+        this.loadEvents();
     }
 }
 

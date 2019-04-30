@@ -27,16 +27,9 @@ class Videos extends Component{
     constructor(props) {
         super(props);
         
-        this.rootPath = "";
+        this.rootPath = "http://localhost:8004";
         this.state = {
-            videos: [
-                {"title":"Icey", "date":"2018-02-09","urlcode":"_DY9LEO2BA0","text":"Gandhi Ali Icey"},
-                {"title":"Ready", "date":"2018-01-11","urlcode":"cVl3G12ry2s","text":"Gandhi Ali Ready"},
-                {"title":"Bet It", "date":"2018-01-07","urlcode":"_CtbzItbu7Y","text":"Gandhi Ali Bet It"},
-                {"title":"Never Mind Em","date":"2017-06-18","urlcode":"5WkiBOylzC0","text":"Gandhi Ali Never Mind Em"},                
-                {"title":"Five", "date":"2016-09-15","urlcode":"8YyLoJkPYRI","text":"Gandhi Ali Five"},
-                {"title":"Jumpman", "date":"2015-12-12","urlcode":"bjMnCi8KEFg","text":"Jumpman"}
-            ]
+            videos: []
         }
     }
 
@@ -105,7 +98,7 @@ class Videos extends Component{
     }
 
     componentDidMount(){
-        //this.loadVideos();      
+        this.loadVideos();      
     }
 }
 

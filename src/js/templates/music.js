@@ -30,7 +30,7 @@ class Music extends Component{
     constructor(props) {
         super(props);
 
-        this.rootPath = "http://localhost:8004";
+        this.rootPath = "";
         this.state = {           
             albums:[],
             mixtapes:[],
